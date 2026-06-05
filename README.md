@@ -4,6 +4,22 @@ Plataforma de atendimento omnichannel: backend Spring Boot corrigido + frontend 
 
 ---
 
+## Clonando o projeto
+
+O repositório usa submódulos git para backend e frontend. Use `--recurse-submodules` para clonar tudo de uma vez:
+
+```bash
+git clone --recurse-submodules https://github.com/IgorcAnjos/desafio-tecnico-nectar.git
+```
+
+Se já clonou sem o flag e os diretórios `omni-challenge-backend/` e `omni-challenge-frontend/` estiverem vazios, rode:
+
+```bash
+git submodule update --init --recursive
+```
+
+---
+
 ## Como rodar
 
 ### Opção 1 — Docker (recomendado)
