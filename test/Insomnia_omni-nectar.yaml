@@ -1,0 +1,577 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: Omni Challenge — Nectar
+meta:
+  id: wrk_omni_nectar
+  created: 1780510863229
+  modified: 1780600000000
+  description: "API omnichannel Nectar. Backend: http://localhost:8080 — H2 em memoria, reinicia a cada boot."
+collection:
+  - name: Webhook — Simular mensagem do cliente
+    meta:
+      id: fld_fddc3a322ec74a319f7c182217c3bc49
+      created: 1780510961052
+      modified: 1780600000000
+      sortKey: -1780510961052
+      description: POST /api/webhooks/inbound — simula o cliente enviando uma nova mensagem. externalId com UUID garante idempotência correta a cada envio.
+    children:
+      - url: "http://localhost:8080/api/webhooks/inbound"
+        name: Maria Souza (zap / loja-oficial)
+        meta:
+          id: req_44f9e75e3c674bb89ebdc6dbbd9b3c34
+          created: 1780510961053
+          modified: 1780600000000
+          isPrivate: false
+          description: ""
+          sortKey: -1780510961053
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "provider": "zap",
+              "channelAccount": "loja-oficial",
+              "contactIdentity": "+5511999998888",
+              "contactName": "Maria Souza",
+              "externalId": "{% uuid 'v4' %}",
+              "text": "Ainda estou esperando retorno sobre meu pedido"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "http://localhost:8080/api/webhooks/inbound"
+        name: Joao Lima (gram / loja-oficial)
+        meta:
+          id: req_1c52e6a382af4d34b25a0b6c31447dc1
+          created: 1780510961054
+          modified: 1780600000000
+          isPrivate: false
+          description: ""
+          sortKey: -1780510961054
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "provider": "gram",
+              "channelAccount": "loja-oficial",
+              "contactIdentity": "@joao.lima",
+              "contactName": "Joao Lima",
+              "externalId": "{% uuid 'v4' %}",
+              "text": "Quero saber sobre promoções"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "http://localhost:8080/api/webhooks/inbound"
+        name: Carla Dias (zap / suporte)
+        meta:
+          id: req_0f3fe347babe49c1bc986d1f2cd89110
+          created: 1780510961055
+          modified: 1780600000000
+          isPrivate: false
+          description: ""
+          sortKey: -1780510961055
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "provider": "zap",
+              "channelAccount": "suporte",
+              "contactIdentity": "+5521988887777",
+              "contactName": "Carla Dias",
+              "externalId": "{% uuid 'v4' %}",
+              "text": "Conseguiu verificar meu boleto?"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "http://localhost:8080/api/webhooks/inbound"
+        name: Pedro Novo (zap / suporte)
+        meta:
+          id: req_5a9e5881a0344a7faf641c0788ad7f74
+          created: 1780510961055
+          modified: 1780600000000
+          isPrivate: false
+          description: ""
+          sortKey: -1780510961055
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "provider": "zap",
+              "channelAccount": "suporte",
+              "contactIdentity": "+5531900001111",
+              "contactName": "Pedro Novo",
+              "externalId": "{% uuid 'v4' %}",
+              "text": "Oi, voltei. Alguém pode me atender?"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "http://localhost:8080/api/webhooks/inbound"
+        name: Ana Pereira — novo contato (zap / loja-oficial)
+        meta:
+          id: req_8f6f76602d044ad9ad5c7a1f3adb5cd0
+          created: 1780510961056
+          modified: 1780600000000
+          isPrivate: false
+          description: ""
+          sortKey: -1780510961056
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "provider": "zap",
+              "channelAccount": "loja-oficial",
+              "contactIdentity": "+5541977776666",
+              "contactName": "Ana Pereira",
+              "externalId": "{% uuid 'v4' %}",
+              "text": "Oi, vi o anúncio e quero saber mais"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Conversas
+    meta:
+      id: fld_7ba6f9fbcc9f4a3db448b51b0b8d4319
+      created: 1780510961056
+      modified: 1780600000000
+      sortKey: -1780510961056
+      description: Leitura da lista de conversas e threads individuais
+    children:
+      - url: "http://localhost:8080/api/conversations"
+        name: Listar todas as conversas
+        meta:
+          id: req_73cadca24c194d47961d8e98ab261453
+          created: 1780510961056
+          modified: 1780600000000
+          isPrivate: false
+          description: ""
+          sortKey: -1780510961056
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "http://localhost:8080/api/conversations/1/messages"
+        name: Mensagens — Maria Souza (id 1)
+        meta:
+          id: req_dfb20a3962ca4145acca994081f7fd7a
+          created: 1780510961057
+          modified: 1780600000000
+          isPrivate: false
+          description: ""
+          sortKey: -1780510961057
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "http://localhost:8080/api/conversations/2/messages"
+        name: Mensagens — Joao Lima (id 2)
+        meta:
+          id: req_48558d20cdb844178f67f358efbbdbcb
+          created: 1780510961057
+          modified: 1780600000000
+          isPrivate: false
+          description: ""
+          sortKey: -1780510961057
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "http://localhost:8080/api/conversations/3/messages"
+        name: Mensagens — Carla Dias (id 3)
+        meta:
+          id: req_cb16043e73f844acbb9728945f12bf96
+          created: 1780510961057
+          modified: 1780600000000
+          isPrivate: false
+          description: ""
+          sortKey: -1780510961057
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "http://localhost:8080/api/conversations/4/messages"
+        name: Mensagens — Pedro Novo (id 4)
+        meta:
+          id: req_7aab20d00e614f038f8ffd564c932f77
+          created: 1780510961058
+          modified: 1780600000000
+          isPrivate: false
+          description: ""
+          sortKey: -1780510961058
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "http://localhost:8080/api/conversations/5/messages"
+        name: Mensagens — Ana Pereira (id 5)
+        meta:
+          id: req_a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6
+          created: 1780600000000
+          modified: 1780600000000
+          isPrivate: false
+          description: ""
+          sortKey: -1780510961059
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Respostas — Enviar como atendente
+    meta:
+      id: fld_199e065c02794e9c8f5428db360027a6
+      created: 1780510961058
+      modified: 1780600000000
+      sortKey: -1780510961058
+      description: POST /api/conversations/{id}/messages — envia resposta OUTBOUND
+    children:
+      - url: "http://localhost:8080/api/conversations/1/messages"
+        name: Responder Maria Souza (id 1)
+        meta:
+          id: req_54f038dc43ab474397223db9d339cde1
+          created: 1780510961058
+          modified: 1780600000000
+          isPrivate: false
+          description: ""
+          sortKey: -1780510961058
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "text": "Olá Maria! Já verificamos seu pedido e está a caminho."
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "http://localhost:8080/api/conversations/2/messages"
+        name: Responder Joao Lima (id 2)
+        meta:
+          id: req_2b5cc906db914c4c90ebf05f4f24f004
+          created: 1780510961059
+          modified: 1780600000000
+          isPrivate: false
+          description: ""
+          sortKey: -1780510961059
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "text": "Oi João! Temos promoções especiais esta semana. Posso te enviar o catálogo?"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "http://localhost:8080/api/conversations/3/messages"
+        name: Responder Carla Dias (id 3)
+        meta:
+          id: req_975a65186d50460ab232160e2a8277f3
+          created: 1780510961059
+          modified: 1780600000000
+          isPrivate: false
+          description: ""
+          sortKey: -1780510961059
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "text": "Olá Carla! Vou verificar a segunda via do seu boleto agora."
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "http://localhost:8080/api/conversations/4/messages"
+        name: Responder Pedro Novo (id 4)
+        meta:
+          id: req_470ba95db97344ec92f2b1ae04c3ad40
+          created: 1780510961059
+          modified: 1780600000000
+          isPrivate: false
+          description: ""
+          sortKey: -1780510961059
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "text": "Olá Pedro! Pode me contar mais sobre o problema com seu pedido?"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "http://localhost:8080/api/conversations/5/messages"
+        name: Responder Ana Pereira (id 5)
+        meta:
+          id: req_b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7
+          created: 1780600000000
+          modified: 1780600000000
+          isPrivate: false
+          description: ""
+          sortKey: -1780510961060
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "text": "Olá Ana! Em que posso te ajudar?"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Marcar como lida
+    meta:
+      id: fld_c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8
+      created: 1780600000000
+      modified: 1780600000000
+      sortKey: -1780510961062
+      description: PATCH /api/conversations/{id}/read — zera unreadCount e emite SSE conversation-updated. Idempotente.
+    children:
+      - url: "http://localhost:8080/api/conversations/1/read"
+        name: Marcar lida — Maria Souza (id 1)
+        meta:
+          id: req_d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9
+          created: 1780600000000
+          modified: 1780600000000
+          isPrivate: false
+          description: ""
+          sortKey: -1780510961063
+        method: PATCH
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "http://localhost:8080/api/conversations/2/read"
+        name: Marcar lida — Joao Lima (id 2)
+        meta:
+          id: req_e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0
+          created: 1780600000000
+          modified: 1780600000000
+          isPrivate: false
+          description: ""
+          sortKey: -1780510961064
+        method: PATCH
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "http://localhost:8080/api/conversations/3/read"
+        name: Marcar lida — Carla Dias (id 3)
+        meta:
+          id: req_f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1
+          created: 1780600000000
+          modified: 1780600000000
+          isPrivate: false
+          description: ""
+          sortKey: -1780510961065
+        method: PATCH
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "http://localhost:8080/api/conversations/4/read"
+        name: Marcar lida — Pedro Novo (id 4)
+        meta:
+          id: req_a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2
+          created: 1780600000000
+          modified: 1780600000000
+          isPrivate: false
+          description: ""
+          sortKey: -1780510961066
+        method: PATCH
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "http://localhost:8080/api/conversations/5/read"
+        name: Marcar lida — Ana Pereira (id 5)
+        meta:
+          id: req_b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3
+          created: 1780600000000
+          modified: 1780600000000
+          isPrivate: false
+          description: ""
+          sortKey: -1780510961067
+        method: PATCH
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: SSE — Tempo real
+    meta:
+      id: fld_c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4
+      created: 1780600000000
+      modified: 1780600000000
+      sortKey: -1780510961068
+      description: "GET /api/events — conexão SSE persistente. Eventos emitidos: conversation-updated (inbound, reply, read) e message-added (inbound, reply)."
+    children:
+      - url: "http://localhost:8080/api/events"
+        name: Conectar ao stream de eventos
+        meta:
+          id: req_d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5
+          created: 1780600000000
+          modified: 1780600000000
+          isPrivate: false
+          description: "Mantém conexão aberta e imprime os eventos SSE em tempo real. Dispare um webhook ou reply em outro terminal para ver os eventos chegando."
+          sortKey: -1780510961069
+        method: GET
+        headers:
+          - name: Accept
+            value: text/event-stream
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_omni_nectar_default
+    created: 1780510893129
+    modified: 1780510893129
+environments:
+  name: Base Environment
+  meta:
+    id: env_omni_nectar_base
+    created: 1780510893128
+    modified: 1780600000000
+    isPrivate: false
+  data: {}

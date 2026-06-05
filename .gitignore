@@ -1,0 +1,25 @@
+# Documentação interna de processo
+docs/
+CLAUDE.md
+.claude/
+.agents/
+skills-lock.json
+
+# Build artifacts — backend
+omni-challenge-backend/target/
+
+# Build artifacts — frontend
+omni-challenge-frontend/node_modules/
+omni-challenge-frontend/dist/
+
+# IDEs
+.idea/
+.vscode/
+*.iml
+
+# macOS
+.DS_Store
+
+# Logs
+logs/
+*.log

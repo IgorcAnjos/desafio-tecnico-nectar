@@ -1,0 +1,6 @@
+[submodule "omni-challenge-backend"]
+	path = omni-challenge-backend
+	url = https://github.com/IgorcAnjos/omni-challenge-backend.git
+[submodule "omni-challenge-frontend"]
+	path = omni-challenge-frontend
+	url = https://github.com/IgorcAnjos/omni-challenge-frontend.git
