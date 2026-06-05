@@ -1,4 +1,4 @@
-# Omni Challenge — Igor Catulo
+# Omni Challenge — Igor Anjos
 
 Plataforma de atendimento omnichannel: backend Spring Boot corrigido + frontend Vue 3 com caixa de entrada para atendentes.
 
