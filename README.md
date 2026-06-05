@@ -2,6 +2,8 @@
 
 Plataforma de atendimento omnichannel: backend Spring Boot corrigido + frontend Vue 3 com caixa de entrada para atendentes.
 
+[Clonar](#clonando-o-projeto) | [Rodar](#como-rodar) | [Arquitetura](#arquitetura-do-frontend) | [Tempo real](#atualização-em-tempo-real--decisão-e-trade-offs) | [Testes](#testes) | [Bugs](#relatório-de-bugs) | [Simplificações](#o-que-foi-simplificado--deixado-de-fora)
+
 ---
 
 ## Clonando o projeto
